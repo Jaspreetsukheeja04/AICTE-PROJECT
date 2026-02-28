@@ -1,9 +1,5 @@
 import streamlit as st
 from textblob import TextBlob
-import nltk
-
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
 
 st.title("AI Study Buddy - NLP Project")
 
