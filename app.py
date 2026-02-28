@@ -1,7 +1,7 @@
 import streamlit as st
 from collections import Counter
 
-st.title("AI Study Buddy - NLP Project")
+st.title("AI Study Buddy for Bionformatics")
 
 st.sidebar.title("About")
 st.sidebar.write("This app performs basic NLP analysis including word count, sentence count, keyword extraction and sentiment detection.")
