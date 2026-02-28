@@ -1,18 +1,14 @@
 import streamlit as st
-from transformers import pipeline
+from textblob import TextBlob
 
 st.title("AI Study Buddy - NLP Project")
 
-qa_pipeline = pipeline("question-answering")
+text = st.text_area("Enter your text")
 
-context = """
-Structural bioinformatics is a branch of bioinformatics
-that focuses on analyzing and predicting the 3D structure
-of biological macromolecules like proteins and nucleic acids.
-"""
-
-question = st.text_area("Enter your question")
-
-if st.button("Generate Answer"):
-    result = qa_pipeline(question=question, context=context)
-    st.write("Answer:", result["answer"])
+if st.button("Analyze Text"):
+    if text:
+        analysis = TextBlob(text)
+        st.write("Sentiment Polarity:", analysis.sentiment.polarity)
+        st.write("Sentiment Subjectivity:", analysis.sentiment.subjectivity)
+    else:
+        st.write("Please enter some text.")
