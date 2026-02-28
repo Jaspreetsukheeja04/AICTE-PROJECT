@@ -1,9 +1,18 @@
 import streamlit as st
+from transformers import pipeline
 
 st.title("AI Study Buddy - NLP Project")
 
-user_input = st.text_area("Enter your text")
+qa_pipeline = pipeline("question-answering")
 
-if st.button("Process"):
-    st.write("You entered:")
-    st.write(user_input)
+context = """
+Structural bioinformatics is a branch of bioinformatics
+that focuses on analyzing and predicting the 3D structure
+of biological macromolecules like proteins and nucleic acids.
+"""
+
+question = st.text_area("Enter your question")
+
+if st.button("Generate Answer"):
+    result = qa_pipeline(question=question, context=context)
+    st.write("Answer:", result["answer"])
